@@ -1,0 +1,20 @@
+#!/bin/bash
+
+MSG=$1
+
+if [ ! "$MSG" ] ; then
+  echo "usage: deploy MSG"
+  exit 1
+fi
+
+grunt
+cd dist
+git add --all .
+git commit -m "$MSG"
+git push
+
+cd ..
+git add dist
+git commit -m "$MSG"
+git push
+
