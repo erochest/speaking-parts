@@ -1,3 +1,12 @@
-<div>
-  <button class="btn btn-info">Clicky</button>
+<div id="main" ng-controller="MainCtrl">
+  <cardstack>
+    <flashcard ng-repeat="part in participants">
+      <test><img src="{{part.avatar}}" /></test>
+      <answer>
+        <h2>{{part.name}}</h2>
+        <h3>{{part.byline}}</h3>
+        {{part.bio}}
+      </answer>
+    </flashcard>
+  </cardstack>
 </div>
