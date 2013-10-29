@@ -1,6 +1,6 @@
 <div id="main" ng-controller="MainCtrl">
   <cardstack>
-    <flashcard ng-repeat="part in participants">
+    <flashcard ng-repeat="part in participants" carddata="part">
       <test><img src="{{part.avatar}}" /></test>
       <answer>
         <h2>{{part.name}}</h2>

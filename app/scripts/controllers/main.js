@@ -254,13 +254,18 @@ angular.module('speakingPartsApp')
   })
   .directive('flashcard', function() {
     return {
+      require: '^cardstack',
       restrict: 'E',
       transclude: true,
+      scope: {
+        card: '=carddata'
+      },
       templateUrl: 'views/flashcard.html'
     };
   })
   .directive('test', function() {
     return {
+      require: '^flashcard',
       restrict: 'E',
       transclude: true,
       template: '<div class="test-pane" ng-transclude></div>'
@@ -268,6 +273,7 @@ angular.module('speakingPartsApp')
   })
   .directive('answer', function() {
     return {
+      require: '^flashcard',
       restrict: 'E',
       transclude: true,
       template: '<div class="answer-pane" ng-transclude></div>'
