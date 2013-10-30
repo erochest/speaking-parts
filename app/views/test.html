@@ -1,1 +1,5 @@
-<div class="test-pane" ng-transclude ng-hide="flipped" ng-click="flipped = true"></div>
+<div class="test-pane"
+  ng-transclude
+  ng-hide="$parent.part.$scope.flipped"
+  ng-click="$parent.part.$scope.flipped = true">
+</div>

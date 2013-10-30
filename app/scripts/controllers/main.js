@@ -252,25 +252,26 @@ angular.module('speakingPartsApp')
         $scope.flipped     = false;
         $scope.done        = false;
         $scope.active      = false;
-        $scope.next        = function() {
+        var next           = function() {
           var i = Math.floor(Math.random() * $scope.stack.length);
-          console.log('next', $scope.stack[i]);
           $scope.stack[i].$scope.active = true;
         };
 
-        console.log('card', $scope.card);
         if ($scope.$parent.$first) {
-          $scope.next();
+          next();
         }
 
-        /*
-         * $scope.$watch('done', function() {
-         *   console.log('done');
-         *   // $scope.next();
-         * });
-         */
+        $scope.$watch(
+          function(scope, callee, caller) {
+            return $scope.done;
+          },
+          function(oldValue, newValue) {
+            if ($scope.done) {
+              $scope.active = $scope.flipped = $scope.done = false;
+              next();
+            }
+          });
       },
-      require: '^cardstack',
       // replace: true,
       restrict: 'E',
       transclude: true,

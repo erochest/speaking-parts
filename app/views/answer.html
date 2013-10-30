@@ -1,1 +1,5 @@
-<div class="answer-pane" ng-transclude ng-show="flipped && !done" ng-click="done = true"></div>
+<div class="answer-pane"
+  ng-transclude
+  ng-show="$parent.part.$scope.flipped && !$parent.part.$scope.done"
+  ng-click="$parent.part.$scope.done = true">
+</div>
