@@ -245,20 +245,38 @@ angular.module('speakingPartsApp')
       }
     ];
   })
-  .directive('cardstack', function() {
-    return {
-      restrict: 'E',
-      transclude: true,
-      templateUrl: 'views/cardstack.html'
-    };
-  })
   .directive('flashcard', function() {
     return {
+      controller: function($scope) {
+        $scope.card.$scope = $scope;
+        $scope.flipped     = false;
+        $scope.done        = false;
+        $scope.active      = false;
+        $scope.next        = function() {
+          var i = Math.floor(Math.random() * $scope.stack.length);
+          console.log('next', $scope.stack[i]);
+          $scope.stack[i].$scope.active = true;
+        };
+
+        console.log('card', $scope.card);
+        if ($scope.$parent.$first) {
+          $scope.next();
+        }
+
+        /*
+         * $scope.$watch('done', function() {
+         *   console.log('done');
+         *   // $scope.next();
+         * });
+         */
+      },
       require: '^cardstack',
+      // replace: true,
       restrict: 'E',
       transclude: true,
       scope: {
-        card: '=carddata'
+        card: '=carddata',
+        stack: '=stack'
       },
       templateUrl: 'views/flashcard.html'
     };
@@ -266,17 +284,19 @@ angular.module('speakingPartsApp')
   .directive('test', function() {
     return {
       require: '^flashcard',
+      // replace: true,
       restrict: 'E',
       transclude: true,
-      template: '<div class="test-pane" ng-transclude></div>'
+      templateUrl: 'views/test.html'
     };
   })
   .directive('answer', function() {
     return {
       require: '^flashcard',
+      // replace: true,
       restrict: 'E',
       transclude: true,
-      template: '<div class="answer-pane" ng-transclude></div>'
+      templateUrl: 'views/answer.html'
     };
   })
   ;
