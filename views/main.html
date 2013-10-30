@@ -1,2 +1,12 @@
-<div class="hero-unit">
+<div id="main" ng-controller="MainCtrl">
+  <div>
+    <flashcard ng-repeat="part in participants" stack="participants" carddata="part">
+      <test><img src="{{part.avatar}}"></test>
+      <answer>
+        <h2>{{part.name}}</h2>
+        <h3>{{part.byline}}</h3>
+        {{part.bio}}
+      </answer>
+    </flashcard>
+  </div>
 </div>
