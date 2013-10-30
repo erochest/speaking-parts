@@ -262,10 +262,8 @@ angular.module('speakingPartsApp')
         }
 
         $scope.$watch(
-          function(scope, callee, caller) {
-            return $scope.done;
-          },
-          function(oldValue, newValue) {
+          'done',
+          function() {
             if ($scope.done) {
               $scope.active = $scope.flipped = $scope.done = false;
               next();
