@@ -1,9 +1,0 @@
-{
-  "name": "flatstrap",
-  "version": "0.0.0",
-  "commit": "e99586f8ce2ec584bc8983741a0b17f2e376098a",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/littlesparkvt/flatstrap.git"
-  }
-}
