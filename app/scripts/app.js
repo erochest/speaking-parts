@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('speakingPartsApp', [
-  'ngSanitize'
+  'ngRoute',
+  'ngSanitize',
+  'ngTouch'
 ])
   .config(function ($routeProvider) {
     $routeProvider

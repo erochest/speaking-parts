@@ -257,7 +257,7 @@ angular.module('speakingPartsApp')
           $scope.stack[i].$scope.active = true;
         };
 
-        if ($scope.$parent.$first) {
+        if ($scope.$parent.$last) {
           next();
         }
 
